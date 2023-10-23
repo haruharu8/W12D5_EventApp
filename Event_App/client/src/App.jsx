@@ -11,6 +11,8 @@ function App() {
 
       <EventForm setEvents={setEvents} />
       <EventList events={events} setEvents={setEvents} />
+      {/* employee form */}
+      {/* employee list */}
     </>
   )
 }

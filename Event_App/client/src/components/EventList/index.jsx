@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './index.css';
+import Event from '../Event';
 
 const EventList = ({events, setEvents}) => {
   
@@ -8,7 +9,7 @@ const EventList = ({events, setEvents}) => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('/server/events');
+        const response = await axios('/server/events');
         setEvents(response.data);
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -44,7 +45,7 @@ const EventList = ({events, setEvents}) => {
     <div className="event-list">
       <h3> List of Events</h3>
       {events.map(event => (
-       <Event key={event._id} event={event} handleDelete={handleDelete} />
+       <Event key={event._id} event={event} setEvents={setEvents} handleDelete={handleDelete} />
       ))}
     </div>
   );
