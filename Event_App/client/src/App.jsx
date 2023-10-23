@@ -9,7 +9,7 @@ function App() {
       My Event
 
       <EventForm />
-      {/* <EventList /> */}
+      <EventList />
     </>
   )
 }
