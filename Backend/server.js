@@ -21,9 +21,17 @@ app.use(helmet());
 
 // start routes
 
+// get events
+
 app.get("/events", async (req, res) => {
     let arrayOfEvents = await Event.find();
     res.send(arrayOfEvents);
+})
+app.delete("/events/:idOfEvent", async (req, res) => {
+    let id = req.params.idOfEvent;
+    let response = await Event.findByIdAndDelete(id);
+    console.log(response);
+    res.send('deleted event');
 })
 
 app.post("/events", async (req,res) => {

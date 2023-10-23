@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const EventForm = () => {
+const EventForm = ({setEvents}) => {
   
   const [eventData, setEventData] = useState({
     title: '',
