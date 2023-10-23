@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { events } from '../../../../../Backend/models/Event';
 
 const EventForm = ({setEvents}) => {
   
@@ -45,6 +46,11 @@ const EventForm = ({setEvents}) => {
       });
       console.log(response);
       if (response.status >= 200 && response.status < 300) {
+        // add response.data to events state
+        // ***** error (events) not being read
+        setEvents((events) => {
+          return [...events, response.data]
+        });
         console.log('Event registered successfully:', response.data);
       } else {
         console.error('Error registering event:', response.data);
