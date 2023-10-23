@@ -17,11 +17,25 @@ const EventList = () => {
     fetchEvents();
   }, []);
 
+
+  console.log("i'm on first render, before useEffect")
+
+  const handleDelete = (eventID) => {
+    //1. go to MongoDB and deelte from DB
+    let response = await axios({
+      method: "DELETE",
+      url: `/server/events/${eventID}`
+    })
+    //2. it's still in state! Still on screen
+    //3. so - set state w/ this ID!
+  }
+
   return (
     <div className="event-list">
-      <h3> Registration for the Event</h3>
+      <h3> List of Events</h3>
       {events.map(event => (
-        <div key={event.id} className="event-item">
+        <div key={event._id} className="event-item">
+          <button onClick={() => handleDelete(event._id)}>Delete</button>
           <h2>{event.title}</h2>
           <p>Date: {event.date}</p>
           <p>Location: {event.location}</p>
